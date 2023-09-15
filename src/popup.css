@@ -5,6 +5,9 @@ body {
 }
 #container {
     width: 386px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 span {
     display: table-cell;
@@ -60,4 +63,33 @@ h3 {
 }
 #total {
     padding-left: 200px;
+}
+p {
+    margin: 0;
+}
+.stat > .row {
+    background-image: none;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 8px 4px;
+}
+
+.stat-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.stat-heading > h3 {
+    margin: 0;
+}
+
+.reset-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
 }

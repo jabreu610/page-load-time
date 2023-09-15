@@ -8,82 +8,113 @@
 <h3>Load timings (ms)</h3>
 <div id="requestStart"></div>
 <div id="container">
-    <div id="header">
-        <span>Event</span>
-        <span>Start</span>
-        <span>Duration</span>
-        <span>End</span>
+    <div >
+        <div id="header">
+            <span>Event</span>
+            <span>Start</span>
+            <span>Duration</span>
+            <span>End</span>
+        </div>
+        <div class="row" id="r-redirect">
+            <span>Redirect</span>
+            <span id="redirectWhen"></span>
+            <span id="redirect"></span>
+            <span id="redirectTotal"></span>
+        </div>
+        <div class="row" id="r-dns">
+            <span>DNS</span>
+            <span id="dnsWhen"></span>
+            <span id="dns"></span>
+            <span id="dnsTotal"></span>
+        </div>
+        <div class="row" id="r-connect">
+            <span>Connect</span>
+            <span id="connectWhen"></span>
+            <span id="connect"></span>
+            <span id="connectTotal"></span>
+        </div>
+        <div class="row" id="r-request">
+            <span>Request</span>
+            <span id="requestWhen"></span>
+            <span id="request"></span>
+            <span id="requestTotal"></span>
+        </div>
+        <div class="row" id="r-response">
+            <span>Response</span>
+            <span id="responseWhen"></span>
+            <span id="response"></span>
+            <span id="responseTotal"></span>
+        </div>
+        <div class="row" id="r-dom">
+            <span>DOM</span>
+            <span id="domWhen"></span>
+            <span id="dom"></span>
+            <span id="domTotal"></span>
+        </div>
+        <div class="row" id="r-domParse">
+            <span class="sub">Parse</span>
+            <span id="domParseWhen"></span>
+            <span id="domParse"></span>
+            <span id="domParseTotal"></span>
+        </div>
+        <div class="row" id="r-domScripts">
+            <span class="sub">Execute Scripts</span>
+            <span id="domScriptsWhen"></span>
+            <span id="domScripts"></span>
+            <span id="domScriptsTotal"></span>
+        </div>
+        <div class="row" id="r-contentLoaded">
+            <span class="sub">Content loaded</span>
+            <span id="contentLoadedWhen"></span>
+            <span id="contentLoaded"></span>
+            <span id="contentLoadedTotal"></span>
+        </div>
+        <div class="row" id="r-domSubRes">
+            <span class="sub">Sub Resources</span>
+            <span id="domSubResWhen"></span>
+            <span id="domSubRes"></span>
+            <span id="domSubResTotal"></span>
+        </div>
+        <div class="row" id="r-load">
+            <span>Load event</span>
+            <span id="loadWhen"></span>
+            <span id="load"></span>
+            <span id="loadTotal"></span>
+        </div>
+        <div class="row" id="r-total">
+            <span>Total</span>
+            <span id="total"></span>
+        </div>
     </div>
-    <div class="row" id="r-redirect">
-        <span>Redirect</span>
-        <span id="redirectWhen"></span>
-        <span id="redirect"></span>
-        <span id="redirectTotal"></span>
+    <div class="stat">
+        <div class="stat-heading">
+            <h3>Page Statistics</h3>
+            <p id="stat-since"></p>
+        </div>
+        <div class="row">
+            <p>Count</p>
+            <p id="stat-count"></p>
+        </div>
+        <div class="row">
+            <p>Cumulative Total</p>
+            <p id="stat-total"></p>
+        </div>
+        <div class="row">
+            <p>Average</p>
+            <p id="stat-avg"></p>
+        </div>
+        <div class="row">
+            <p>Low</p>
+            <p id="stat-low"></p>
+        </div>
+        <div class="row">
+            <p>High</p>
+            <p id="stat-high"></p>
+        </div>
+        <div class="reset-container">
+            <button id="stat-reset">Reset</button>
+        </div>
     </div>
-    <div class="row" id="r-dns">
-        <span>DNS</span>
-        <span id="dnsWhen"></span>
-        <span id="dns"></span>
-        <span id="dnsTotal"></span>
-    </div>
-    <div class="row" id="r-connect">
-        <span>Connect</span>
-        <span id="connectWhen"></span>
-        <span id="connect"></span>
-        <span id="connectTotal"></span>
-    </div>
-    <div class="row" id="r-request">
-        <span>Request</span>
-        <span id="requestWhen"></span>
-        <span id="request"></span>
-        <span id="requestTotal"></span>
-    </div>
-    <div class="row" id="r-response">
-        <span>Response</span>
-        <span id="responseWhen"></span>
-        <span id="response"></span>
-        <span id="responseTotal"></span>
-    </div>
-    <div class="row" id="r-dom">
-        <span>DOM</span>
-        <span id="domWhen"></span>
-        <span id="dom"></span>
-        <span id="domTotal"></span>
-    </div>
-    <div class="row" id="r-domParse">
-        <span class="sub">Parse</span>
-        <span id="domParseWhen"></span>
-        <span id="domParse"></span>
-        <span id="domParseTotal"></span>
-    </div>
-    <div class="row" id="r-domScripts">
-        <span class="sub">Execute Scripts</span>
-        <span id="domScriptsWhen"></span>
-        <span id="domScripts"></span>
-        <span id="domScriptsTotal"></span>
-    </div>
-    <div class="row" id="r-contentLoaded">
-        <span class="sub">Content loaded</span>
-        <span id="contentLoadedWhen"></span>
-        <span id="contentLoaded"></span>
-        <span id="contentLoadedTotal"></span>
-    </div>
-    <div class="row" id="r-domSubRes">
-        <span class="sub">Sub Resources</span>
-        <span id="domSubResWhen"></span>
-        <span id="domSubRes"></span>
-        <span id="domSubResTotal"></span>
-    </div>
-    <div class="row" id="r-load">
-        <span>Load event</span>
-        <span id="loadWhen"></span>
-        <span id="load"></span>
-        <span id="loadTotal"></span>
-    </div>
-    <div class="row" id="r-total">
-        <span>Total</span>
-        <span id="total"></span>
-    </div>
-    <br>
-    Timings are based on <a href="https://w3c.github.io/navigation-timing/">Navigation Timing Level 2 Spec</a>
 </div>
+<br>
+Timings are based on <a href="https://w3c.github.io/navigation-timing/">Navigation Timing Level 2 Spec</a>
