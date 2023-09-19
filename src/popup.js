@@ -11,6 +11,23 @@ function set(id, start, end, noacc) {
     'background-position-x:' + (x >= 300 ? 299 : x) + 'px;';
 }
 
+function formatDuration(milliseconds) {
+  const seconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 0) {
+    return `${days} day${days !== 1 ? 's' : ''}`;
+  } else if (hours > 0) {
+    return `${hours} hour${hours !== 1 ? 's' : ''}`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+  } else {
+    return `${seconds} second${seconds !== 1 ? 's' : ''}`;
+  }
+}
+
 browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
   var tab = tabs[0];
   browser.storage.local.get(['cache', 'stat']).then(data => {
@@ -38,6 +55,25 @@ browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
         document.getElementById('stat-low').innerHTML = '';
         document.getElementById('stat-high').innerHTML = '';
       });
+    });
+
+    document.getElementById("stat-copy").addEventListener("click", () => {
+      // copy to clipboard
+      if (navigator.clipboard) {
+        let content = [
+          `for ${tab.url}`,
+          `since ${new Date(data.stat[tab.url].since).toLocaleString()}`,
+          `*  ${data.stat[tab.url].count} requests`,
+          `*  Total load time: ${formatDuration(data.stat[tab.url].sum)}`,
+          `*  Average load time: ${formatDuration(data.stat[tab.url].sum / data.stat[tab.url].count)}`,
+          `*  Shortest load time: ${formatDuration(data.stat[tab.url].min)}`,
+          `*  Longest load time: ${formatDuration(data.stat[tab.url].max)}`,
+        ].join('\n');
+        const clipboardItem = new ClipboardItem({
+          'text/plain': new Blob([content.trim()], {type: 'text/plain'})
+        });
+        navigator.clipboard.write([clipboardItem]);
+      }
     });
     
     // https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html#processing-model

@@ -86,7 +86,7 @@ p {
     margin: 0;
 }
 
-.reset-container {
+.control-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
